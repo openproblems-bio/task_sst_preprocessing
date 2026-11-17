@@ -1,0 +1,55 @@
+# task_template x.y.z
+
+## BREAKING CHANGES
+
+<!-- * Restructured `src` directory (PR #3). -->
+
+* `run_benchmark`: replaced `--method_ids` with `--methods_include`/`--methods_exclude` and added `--metrics_include`/`--metrics_exclude` (PR #20).
+
+## NEW FUNCTIONALITY
+
+* Added `control_methods/true_labels` component (PR #5).
+
+* Added `methods/logistic_regression` component (PR #5).
+
+* Added `metrics/accuracy` component (PR #5).
+
+* Added `control_methods/random_labels` component (PR #22).
+
+* `run_benchmark`: run parameterised methods once per named paramset from `info.variants` or the new `--paramsets` file, tag scores with `paramset_name`/`paramset`, and allow `--methods_include`/`--methods_exclude` to target `<method_id>.<paramset_name>`, using the new paramset helpers in `common/nextflow_helpers/helper.nf` (PR #23).
+
+* `methods/logistic_regression`: added an `--inverse_regularization_strength` argument with three `info.variants` as an example of a parameterised method (PR #23).
+
+## MAJOR CHANGES
+
+* Updated `api` files (PR #5).
+
+* Updated configs, components and CI to the latest Viash version (PR #8).
+
+* Updated to Viash 0.9.4 (PR #12).
+
+* Use dependencies in `openproblems-bio/openproblems` (PR #12).
+
+## MINOR CHANGES
+
+* Updated `README.md` (PR #5).
+
+* `run_benchmark`: write the commit the workflow ran from and the launch time into
+  `task_info.yaml`, instead of publishing `_viash.yaml` verbatim (PR #18).
+
+* Updated to Viash 0.9.7 (PR #19).
+
+* Updated the `common` submodule (PR #19).
+
+* Fixed broken documentation links in `README.md` and `CONTRIBUTING.md`, and added a quickstart to the README (PR #21).
+
+* `run_test_local.sh` now runs as-is on the template's test resources (PR #21).
+
+* Added a placeholder `thumbnail.svg` and scoped the common test resources to `cxg_mouse_pancreas_atlas` (PR #21).
+
+## BUGFIXES
+
+* `process_dataset`: also seed `np.random` when `--seed` is set (PR #22).
+
+* `accuracy`: write `metric_values` as a list to match `metric_ids` (PR #22).
+
